@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql
+    network_mode: bridge
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "web"
+      MYSQL_USER: "hulley"
+      MYSQL_PASSWORD: "root"
+    expose:
+      - "3306"
+    volumes:
+      - web_db:/var/lib/mysql
+    restart: always
