@@ -26,6 +26,11 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `ASSOCIADO`
 --
 
+
+CREATE DATABASE `web`;
+
+USE `web`;
+
 CREATE TABLE IF NOT EXISTS `ASSOCIADO` (
   `Codigo` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(35) NOT NULL,
@@ -78,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `FUNCIONARIO` (
   `Nome` varchar(35) NOT NULL,
   `Funcao` enum('gerente','funcionario') NOT NULL,
   `Email` varchar(20) NOT NULL,
+  `Senha` varchar(255) NOT NULL,
   PRIMARY KEY (`Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -121,6 +127,7 @@ CREATE TABLE IF NOT EXISTS `RESERVA` (
 --
 ALTER TABLE `EMPRESTIMO`
   ADD CONSTRAINT `EMPRESTIMO_ibfk_1` FOREIGN KEY (`Codigo_Assoc`) REFERENCES `ASSOCIADO` (`Codigo`);
+
 
 --
 -- Restrições para a tabela `EXEMPLAR`

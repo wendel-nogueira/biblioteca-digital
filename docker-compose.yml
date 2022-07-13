@@ -12,6 +12,4 @@ services:
       MYSQL_PASSWORD: "root"
     expose:
       - "3306"
-    volumes:
-      - web_db:/var/lib/mysql
     restart: always
