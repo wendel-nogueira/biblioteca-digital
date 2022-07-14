@@ -25,16 +25,16 @@ class EmployeeRepository {
         });
     }
 
-    public async create(associate: any) {
-        return this.employee.init().create(associate).then(data => {
+    public async create(employee: any) {
+        return this.employee.init().create(employee).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async update(id: number, associate: any) {
-        return this.employee.init().update(associate, { where: { id: id } }).then(data => {
+    public async update(id: number, employee: any) {
+        return this.employee.init().update(employee, { where: { id: id } }).then(data => {
             return data;
         }).catch(error => {
             return error;

@@ -25,16 +25,16 @@ class PublicationRepository {
         });
     }
 
-    public async create(associate: any) {
-        return this.publication.init().create(associate).then(data => {
+    public async create(publication: any) {
+        return this.publication.init().create(publication).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async update(id: number, associate: any) {
-        return this.publication.init().update(associate, { where: { id: id } }).then(data => {
+    public async update(id: number, publication: any) {
+        return this.publication.init().update(publication, { where: { id: id } }).then(data => {
             return data;
         }).catch(error => {
             return error;
