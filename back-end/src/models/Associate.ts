@@ -1,8 +1,8 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 
 
 class Associate {
-  connect: Sequelize;
+  private connect: Sequelize;
 
   constructor(sequelize: Sequelize) {
     this.connect = sequelize;

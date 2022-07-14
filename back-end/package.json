@@ -23,7 +23,6 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.21.3",
-    "typeorm": "^0.3.7"
+    "sequelize": "^6.21.3"
   }
 }
