@@ -17,8 +17,10 @@ class LoanRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.loan.init().findByPk(id).then(data => {
+    public async get(query: any) {
+        return this.loan.init().findOne(
+            { where: query }
+        ).then(data => {
             return data;
         }).catch(error => {
             return error;

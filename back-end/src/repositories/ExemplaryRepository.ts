@@ -17,8 +17,10 @@ class ExemplaryRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.exemplary.init().findByPk(id).then(data => {
+    public async get(query: any) {
+        return this.exemplary.init().findOne(
+            { where: query }
+        ).then(data => {
             return data;
         }).catch(error => {
             return error;

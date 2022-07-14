@@ -17,8 +17,10 @@ class ReserveRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.reserve.init().findByPk(id).then(data => {
+    public async get(query: any) {
+        return this.reserve.init().findOne(
+            { where: query }
+        ).then(data => {
             return data;
         }).catch(error => {
             return error;

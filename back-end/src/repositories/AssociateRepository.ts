@@ -17,8 +17,10 @@ class AssociateRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.associate.init().findByPk(id).then(data => {
+    public async get(query: any) {
+        return this.associate.init().findOne(
+            { where: query }
+        ).then(data => {
             return data;
         }).catch(error => {
             return error;
@@ -34,7 +36,7 @@ class AssociateRepository {
     }
 
     public async update(id: number, associate: any) {
-        return this.associate.init().update(associate, { where: { id: id } }).then(data => {
+        return this.associate.init().update(associate, { where: { Codigo: id } }).then(data => {
             return data;
         }).catch(error => {
             return error;
@@ -42,7 +44,7 @@ class AssociateRepository {
     }
 
     public async delete(id: number) {
-        return this.associate.init().destroy({ where: { id: id } }).then(data => {
+        return this.associate.init().destroy({ where: { Codigo: id } }).then(data => {
             return data;
         }).catch(error => {
             return error;

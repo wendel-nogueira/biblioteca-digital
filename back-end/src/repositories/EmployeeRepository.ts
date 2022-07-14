@@ -17,8 +17,10 @@ class EmployeeRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.employee.init().findByPk(id).then(data => {
+    public async get(query: any) {
+        return this.employee.init().findOne(
+            { where: query }
+        ).then(data => {
             return data;
         }).catch(error => {
             return error;
