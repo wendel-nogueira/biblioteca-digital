@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 
 
 class Exemplary {
-  connect: Sequelize;
+  private connect: Sequelize;
 
   constructor(sequelize: Sequelize) {
     this.connect = sequelize;
