@@ -9,7 +9,7 @@ class ExemplaryRepository {
         this.exemplary = new Exemplary(sequelize);
     }
 
-    public async getAll() {
+    public async getAll(): Promise<Array<any>> {
         return this.exemplary.init().findAll().then(data => {
             return data;
         }).catch(error => {
@@ -17,15 +17,17 @@ class ExemplaryRepository {
         });
     }
 
-    public async getById(id: number) {
-        return this.exemplary.init().findByPk(id).then(data => {
+    public async getById(id: number): Promise<any> {
+        return this.exemplary.init().findByPk(id, {
+            raw: true
+        }).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async create(exemplary: any) {
+    public async create(exemplary: any): Promise<any> {
         return this.exemplary.init().create(exemplary).then(data => {
             return data;
         }).catch(error => {
@@ -33,17 +35,17 @@ class ExemplaryRepository {
         });
     }
 
-    public async update(id: number, exemplary: any) {
-        return this.exemplary.init().update(exemplary, { where: { id: id } }).then(data => {
-            return data;
+    public async update(id: number, exemplary: any): Promise<any> {
+        return this.exemplary.init().findByPk(id).then(data => {
+            return data.update(exemplary);
         }).catch(error => {
             return error;
         });
     }
 
-    public async delete(id: number) {
-        return this.exemplary.init().destroy({ where: { id: id } }).then(data => {
-            return data;
+    public async delete(id: number): Promise<any> {
+        return this.exemplary.init().findByPk(id).then(data => {
+            return data.destroy();
         }).catch(error => {
             return error;
         });

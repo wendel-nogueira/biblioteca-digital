@@ -9,7 +9,7 @@ class PublicationRepository {
         this.publication = new Publication(sequelize);
     }
 
-    public async getAll() {
+    public async getAll(): Promise<Array<any>> {
         return this.publication.init().findAll().then(data => {
             return data;
         }).catch(error => {
@@ -17,33 +17,35 @@ class PublicationRepository {
         });
     }
 
-    public async getById(id: number) {
+    public async getById(id: number): Promise<any> {
+        return this.publication.init().findByPk(id, {
+            raw: true
+        }).then(data => {
+            return data;
+        }).catch(error => {
+            return error;
+        });
+    }
+
+    public async create(publication: any): Promise<any> {
+        return this.publication.init().create(publication).then(data => {
+            return data;
+        }).catch(error => {
+            return error;
+        });
+    }
+
+    public async update(id: number, publication: any): Promise<any> {
         return this.publication.init().findByPk(id).then(data => {
-            return data;
+            return data.update(publication);
         }).catch(error => {
             return error;
         });
     }
 
-    public async create(associate: any) {
-        return this.publication.init().create(associate).then(data => {
-            return data;
-        }).catch(error => {
-            return error;
-        });
-    }
-
-    public async update(id: number, associate: any) {
-        return this.publication.init().update(associate, { where: { id: id } }).then(data => {
-            return data;
-        }).catch(error => {
-            return error;
-        });
-    }
-
-    public async delete(id: number) {
-        return this.publication.init().destroy({ where: { id: id } }).then(data => {
-            return data;
+    public async delete(id: number): Promise<any> {
+        return this.publication.init().findByPk(id).then(data => {
+            return data.destroy();
         }).catch(error => {
             return error;
         });
