@@ -9,25 +9,27 @@ class AssociateRepository {
         this.associate = new Associate(sequelize);
     }
 
-    public async getAll() {
-        return this.associate.init().findAll().then(data => {
+    public async getAll(): Promise<Array<any>> {
+        return this.associate.init().findAll({
+            raw: true
+        }).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async get(query: any) {
-        return this.associate.init().findOne(
-            { where: query }
-        ).then(data => {
+    public async getById(id: number): Promise<any> {
+        return this.associate.init().findByPk(id, {
+            raw: true
+        }).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async create(associate: any) {
+    public async create(associate: any): Promise<any> {
         return this.associate.init().create(associate).then(data => {
             return data;
         }).catch(error => {
@@ -35,17 +37,17 @@ class AssociateRepository {
         });
     }
 
-    public async update(id: number, associate: any) {
-        return this.associate.init().update(associate, { where: { Codigo: id } }).then(data => {
-            return data;
+    public async update(id: number, associate: any): Promise<any> {
+        return this.associate.init().findByPk(id).then(data => {
+            return data.update(associate);
         }).catch(error => {
             return error;
         });
     }
 
-    public async delete(id: number) {
-        return this.associate.init().destroy({ where: { Codigo: id } }).then(data => {
-            return data;
+    public async delete(id: number): Promise<any> {
+        return this.associate.init().findByPk(id).then(data => {
+            return data.destroy();
         }).catch(error => {
             return error;
         });

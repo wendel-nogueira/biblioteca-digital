@@ -13,7 +13,7 @@ class Exemplary {
       Numero: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        primaryKey: true
       },
       ISBN: {
         type: DataTypes.STRING(12),

@@ -1,11 +1,28 @@
-import { ListAllAssociateService } from './services/ListAllAssociateService';
-import { AssociateStatus } from './interfaces/enums/AssociateStatus';
+import 'reflect-metadata'
+import express, { Request, Response, NextFunction } from 'express'
+import 'express-async-errors'
+import { router } from './routes'
 
 
-const listAllAssociateService = new ListAllAssociateService();
+const app = express()
 
-listAllAssociateService.execute().then(result => {
-    console.log(result);
-}).catch(error => {
-    console.log(error);
-});
+app.use(express.json())
+app.use('/api', router)
+
+
+app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
+    if (err instanceof Error) {
+        return response.status(400).json({
+            error: err.message
+        })
+    }else {
+        return response.status(500).json({
+            status: "error",
+            message: "Internal Server Error"
+        }) 
+    }
+})
+
+app.listen(3000, () => {
+    console.log('Server started on port 3000')
+})

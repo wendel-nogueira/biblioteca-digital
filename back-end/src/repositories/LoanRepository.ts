@@ -9,7 +9,7 @@ class LoanRepository {
         this.loan = new Loan(sequelize);
     }
 
-    public async getAll() {
+    public async getAll(): Promise<Array<any>> {
         return this.loan.init().findAll().then(data => {
             return data;
         }).catch(error => {
@@ -17,17 +17,17 @@ class LoanRepository {
         });
     }
 
-    public async get(query: any) {
-        return this.loan.init().findOne(
-            { where: query }
-        ).then(data => {
+    public async getById(id: number): Promise<any> {
+        return this.loan.init().findByPk(id, {
+            raw: true
+        }).then(data => {
             return data;
         }).catch(error => {
             return error;
         });
     }
 
-    public async create(loan: any) {
+    public async create(loan: any): Promise<any> {
         return this.loan.init().create(loan).then(data => {
             return data;
         }).catch(error => {
@@ -35,17 +35,17 @@ class LoanRepository {
         });
     }
 
-    public async update(id: number, loan: any) {
-        return this.loan.init().update(loan, { where: { id: id } }).then(data => {
-            return data;
+    public async update(id: number, loan: any): Promise<any> {
+        return this.loan.init().findByPk(id).then(data => {
+            return data.update(loan);
         }).catch(error => {
             return error;
         });
     }
 
-    public async delete(id: number) {
-        return this.loan.init().destroy({ where: { id: id } }).then(data => {
-            return data;
+    public async delete(id: number): Promise<any> {
+        return this.loan.init().findByPk(id).then(data => {
+            return data.destroy();
         }).catch(error => {
             return error;
         });
