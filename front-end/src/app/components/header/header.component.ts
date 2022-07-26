@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd  } from '@angular/router';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,8 @@ import { Router, NavigationEnd  } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   currentUrl = this.router.url;
-  logged = true;
-  isManager = true;
-  showOptions = true;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private tokenStorage: TokenStorageService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
@@ -20,9 +18,32 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  token = this.tokenStorage.getToken();
+  type = this.tokenStorage.getType();
+
+  logged = false;
+  isManager = false;
+  showOptions = true;
+
   ngOnInit(): void {
-    console.log(this.currentUrl);
+    this.toggleOptions();
   }
 
+  logout() {
+    this.tokenStorage.signOut();
+    this.toggleOptions();
+    window.location.reload();
+  }
 
+  toggleOptions() {
+    if (this.token == null) {
+      this.logged = false;
+    } else {
+      this.logged = true;
+    }
+
+    if (this.type == 'gerente') {
+      this.isManager = true;
+    }
+  }
 }

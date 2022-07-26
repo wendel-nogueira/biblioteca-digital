@@ -86,7 +86,7 @@
     <a href="login" class="button" *ngIf="!logged">
       entrar
     </a>
-    <button class="button" *ngIf="logged">
+    <button class="button" *ngIf="logged" (click)="logout()">
       sair
     </button>
   </div>

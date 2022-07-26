@@ -23,7 +23,10 @@ class AuthenticateEmployeeService {
             { subject: employee.Codigo.toString(), expiresIn: '1d'}
         );
 
-        return token;
+        return {
+            token,
+            type: employee.Funcao
+        };
     }
 }
 

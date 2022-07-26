@@ -16,24 +16,18 @@
         <th scope="col">Associado</th>
         <th scope="col">Empréstimo</th>
         <th scope="col">Devolução</th>
-        <th scope="col">Ações</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody class="tbody">
-      <tr class="row">
-        <th scope="row">1</th>
-        <td>Exemplar</td>
-        <td>ISBN</td>
-        <td>Associado</td>
-        <td>Empréstimo</td>
-        <td>Devolução</td>
-        <td>
-          <a href="#">
-            <div class="icon-view icon-info icon-info-view">
-              <i class="fa fa-info fa-fw"></i>
-            </div>
-          </a>
-        </td>
+      <tr class="row" *ngFor="let loan of loans;">
+        <th scope="row">#</th>
+        <td>{{ loan['Nro_Exemplar'] }}</td>
+        <td>{{ loan['ISBN'] }}</td>
+        <td>{{ loan['associado']['Email'] }}</td>
+        <td>{{ loan['Data_Emp'] }}</td>
+        <td>{{ loan['Data_Devol'] }}</td>
+        <td>{{ loan['status'] }}</td>
       </tr>
     </tbody>
   </table>

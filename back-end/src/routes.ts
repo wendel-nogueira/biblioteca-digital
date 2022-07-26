@@ -88,19 +88,19 @@ router.post('/autenticar', authenticateEmployeeController.handle);
 
 
 //  GET
-router.get('/associado/:codigo', ensureAuthenticated, listAssociateController.handle);
+router.get('/associado/:codigo', listAssociateController.handle);
 router.get('/funcionario/:codigo', ensureAuthenticated, listEmployeeController.handle);
 router.get('/exemplar/:codigo', ensureAuthenticated, listExemplaryController.handle);
-router.get('/emprestimo/:codigo', ensureAuthenticated, listLoanController.handle);
-router.get('/publicacao/:codigo', ensureAuthenticated, listPublicationController.handle);
+router.get('/emprestimo/:codigo', listLoanController.handle);
+router.get('/publicacao/:codigo', listPublicationController.handle);
 router.get('/reserva/:codigo', ensureAuthenticated, listReserveController.handle);
 
 //  GET All
 router.get('/associado', ensureAuthenticated, listAllAssociateController.handle);
 router.get('/funcionario', ensureAuthenticated, listAllEmployeeController.handle);
 router.get('/exemplar', ensureAuthenticated, listAllExemplaryController.handle);
-router.get('/emprestimo', ensureAuthenticated, listAllLoanController.handle);
-router.get('/publicacao', ensureAuthenticated, listAllPublicationController.handle);
+router.get('/emprestimo', listAllLoanController.handle);
+router.get('/publicacao', listAllPublicationController.handle);
 router.get('/reserva', ensureAuthenticated, listAllReserveController.handle);
 
 //  POST
@@ -115,7 +115,7 @@ router.post('/reserva', ensureAuthenticated, createReserveController.handle);
 router.patch('/associado/:codigo', ensureAuthenticated, updateAssociateController.handle);
 router.patch('/funcionario/:codigo', ensureAuthenticated, updateEmployeeController.handle);
 router.patch('/exemplar/:codigo', ensureAuthenticated, updateExemplaryController.handle);
-router.patch('/emprestimo/:codigo', ensureAuthenticated, updateLoanController.handle);
+router.patch('/emprestimo/:codigo', updateLoanController.handle);
 router.patch('/publicacao/:codigo', ensureAuthenticated, updatePublicationController.handle);
 router.patch('/reserva/:codigo', ensureAuthenticated, updateReserveController.handle);
 
