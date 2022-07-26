@@ -1,0 +1,69 @@
+.header{
+  background-color: var(--color-primary);
+  min-width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 36px;
+  border-radius: 0px 10px 10px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.header .menu{
+  margin-top: 54px;
+}
+
+.header .menu .menu-items{
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.header .menu .menu-items .item{
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  cursor: pointer;
+  transition: var(--transition-time) var(--transition-timing-function);
+  position: relative;
+  width: max-content;
+}
+
+.header .menu .menu-items .item::after{
+  content: "";
+  width: 0px;
+  height: 2px;
+  background-color: var(--color-secondary);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: var(--transition-time) var(--transition-timing-function);
+}
+
+.header .menu .menu-items .item:hover{
+  color: var(--color-secondary);
+}
+
+.header .menu .menu-items .item:hover::after,
+.header .menu .menu-items .item.active::after{
+  width: 100%;
+}
+
+.header .menu .menu-items .item.active a{
+  color: var(--color-secondary);
+}
+
+.header .options{
+  position: fixed;
+  top: 24px;
+  right: 36px;
+}
+
+.header .options.hide{
+  display: none;
+}

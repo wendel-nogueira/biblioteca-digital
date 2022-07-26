@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+
+
+::ng-deep *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::ng-deep :root{
+  /*  Background colors */
+  --background-color-primary: #f5f5f5;
+  --background-color-secondary: #fafafa;
+  --background-color-tertiary: #ffffff;
+
+  /*  Text colors */
+  --text-color-primary: #242324;
+  --text-color-secondary: #555555;
+  --text-color-tertiary: #979797;
+
+  /*  Other colors */
+  --color-primary: #01c29a;
+  --color-secondary: #019174;
+
+  /*  Information colors */
+  --success-color: #36b37e;
+  --success-color-dark: #278b61;
+  --warning-color: #ff991f;
+  --warning-color-dark: #db8419;
+  --danger-color: #de350b;
+  --danger-color-dark: #b32b09;
+  --info-color: #6554c0;
+  --info-color-dark: #4e3dac;
+
+  /*  Transition */
+  --transition-time: 0.4s;
+  --transition-timing-function: ease-in-out;
+}
+
+::ng-deep body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color-primary);
+  background-color: var(--background-color-secondary);
+}
+
+::ng-deep li{
+  list-style: none;
+}
+
+::ng-deep a{
+  text-decoration: none;
+  color: var(--text-color-primary);
+}
+
+::ng-deep .button{
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--text-color-primary);
+  background-color: var(--background-color-primary);
+  border: 1px solid var(--background-color-primary);
+  cursor: pointer;
+  transition: var(--transition-time) var(--transition-timing-function);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .button:hover{
+  color: #FFF;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+::ng-deep .title{
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-color-primary);
+}
+
+::ng-deep .subtitle{
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-color-secondary);
+}
+
+::ng-deep .description{
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-color-tertiary);
+}
+
+::ng-deep .form{
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+::ng-deep .form-group{
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+::ng-deep .label{
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color-secondary);
+}
+
+::ng-deep .input,
+::ng-deep .textarea,
+::ng-deep .select{
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-color-secondary);
+  border: 2px solid var(--background-color-primary);
+  border-radius: 3px;
+  padding: 6px 12px;
+  transition: var(--transition-time) var(--transition-timing-function);
+}
+
+::ng-deep .select,
+::ng-deep .input::placeholder,
+::ng-deep .textarea::placeholder,
+::ng-deep .select::placeholder{
+  color: var(--text-color-tertiary);
+}
+
+::ng-deep option{
+  color: var(--text-color-secondary);
+}
+
+::ng-deep .button-info{
+  color: #FFF;
+  transition: var(--transition-time) var(--transition-timing-function);
+}
+
+::ng-deep .button-info-sucess{
+  background-color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+::ng-deep .button-info-sucess:hover{
+  background-color: var(--success-color-dark);
+  border: 1px solid var(--success-color-dark);
+}
+
+::ng-deep .button-info-alert{
+  background-color: var(--warning-color);
+  border: 1px solid var(--warning-color);
+}
+
+::ng-deep .button-info-alert:hover{
+  background-color: var(--warning-color-dark);
+  border: 1px solid var(--warning-color-dark);
+}
+
+::ng-deep .button-info-danger{
+  background-color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+
+::ng-deep .button-info-danger:hover{
+  background-color: var(--danger-color-dark);
+  border: 1px solid var(--danger-color-dark);
+}
+
+::ng-deep .button-info-view{
+  background-color: var(--info-color);
+  border: 1px solid var(--info-color);
+}
+
+::ng-deep .button-info-view:hover{
+  background-color: var(--info-color-dark);
+  border: 1px solid var(--info-color-dark);
+}
+
+::ng-deep .icon-info{
+  transition: var(--transition-time) var(--transition-timing-function);
+}
+
+::ng-deep .icon-info-sucess{
+  color: var(--success-color);
+}
+
+::ng-deep .icon-info-sucess:hover{
+  color: var(--success-color-dark);
+}
+
+::ng-deep .icon-info-alert{
+  color: var(--warning-color);
+}
+
+::ng-deep .icon-info-alert:hover{
+  color: var(--warning-color-dark);
+}
+
+::ng-deep .icon-info-danger{
+  color: var(--danger-color);
+}
+
+::ng-deep .icon-info-danger:hover{
+  color: var(--danger-color-dark);
+}
+
+::ng-deep .icon-info-view{
+  color: var(--info-color);
+}
+
+::ng-deep .icon-info-view:hover{
+  color: var(--info-color-dark);
+}
+
+
+::ng-deep .main{
+  width: calc(100% - 300px);
+  min-height: calc(100vh - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.footer{
+  width: calc(100% - 300px);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
