@@ -1,0 +1,10 @@
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+.description{
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}

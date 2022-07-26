@@ -1,0 +1,34 @@
+<div class="form">
+  <div class="form-group">
+    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar">
+    <button type="submit" class="button">
+      <i class="fa fa-search fa-fw"></i>
+    </button>
+  </div>
+</div>
+<div class="list">
+  <table class="table">
+    <thead class="thead">
+      <tr class="row">
+        <th scope="col">#</th>
+        <th scope="col">Exemplar</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Associado</th>
+        <th scope="col">Empréstimo</th>
+        <th scope="col">Devolução</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <tr class="row" *ngFor="let loan of loans;">
+        <th scope="row">#</th>
+        <td>{{ loan['Nro_Exemplar'] }}</td>
+        <td>{{ loan['ISBN'] }}</td>
+        <td>{{ loan['associado']['Email'] }}</td>
+        <td>{{ loan['Data_Emp'] }}</td>
+        <td>{{ loan['Data_Devol'] }}</td>
+        <td>{{ loan['status'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

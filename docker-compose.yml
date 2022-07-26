@@ -8,8 +8,17 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "web"
-      MYSQL_USER: "hulley"
+      MYSQL_USER: "root"
       MYSQL_PASSWORD: "root"
     expose:
       - "3306"
+    restart: always
+  
+  nodejs:
+    image: nodejs
+    network_mode: bridge
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
     restart: always

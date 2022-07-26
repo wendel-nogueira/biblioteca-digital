@@ -1,0 +1,102 @@
+::ng-deep .main{
+  align-items: flex-start;
+}
+
+::ng-deep .main > *:last-child{
+  width: 100%;
+}
+
+.form{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 120px;
+  padding-right: 48px;
+}
+
+.form .form-group{
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.form .button{
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #FFF;
+  padding: 6px 6px;
+}
+
+.form .button:hover{
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
+.list{
+  margin-top: 36px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list .table{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list .table .thead{
+  width: 100%;
+}
+
+.list .table .thead .row{
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.list .table .thead th{
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-color-primary);
+  text-align: center;
+}
+
+.list .table .thead th:nth-child(1){
+  border-radius: 5px 0px 0px 5px;
+}
+
+.list .table .thead th:last-child{
+  border-radius: 0px 5px 5px 0px;
+}
+
+.list .table .thead .row,
+.list .table .tbody .row{
+  display: grid;
+  grid-template-columns: 5% 20% 20% 20% 11% 11% 8%;
+}
+
+.list .table .tbody .row th,
+.list .table .tbody .row td{
+  padding: 10px;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  color: var(--text-color-secondary);
+}
+
+.list .table .tbody{
+  width: 100%;
+  max-height: calc(100vh - 324px);
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
+.list .table .tbody .row{
+  transition: var(--transition-time) var(--transition-timing-function);
+}
+
+.list .table .tbody .row:hover{
+  background-color: var(--background-color-primary);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}

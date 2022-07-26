@@ -1,0 +1,93 @@
+<header class="header">
+  <nav class="menu">
+    <ul class="menu-items">
+      <li class="item" [ngClass]="{'active': currentUrl == '/'}">
+        <a href="/" class="item">
+          <i class="fal fa-home-alt fa-fw"></i>
+          início
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/associado'}">
+        <a href="/associado" class="item">
+          <i class="fal fa-user-plus fa-fw"></i>
+          cadastrar associado
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/publicacao'}">
+        <a href="/publicacao" class="item">
+          <i class="fal fa-book-medical fa-fw"></i>
+          cadastrar publicação
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/exemplar'}">
+        <a href="/exemplar" class="item">
+          <i class="fal fa-books-medical fa-fw"></i>
+          cadastrar exemplar
+        </a>
+      </li>
+      <li class="item" [ngClass]="{'active': currentUrl == '/publicacoes'}">
+        <a href="/publicacoes" class="item">
+          <i class="fal fa-file-search fa-fw"></i>
+          consultar publicação
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/reservar'}">
+        <a href="/reservar" class="item">
+          <i class="fal fa-bookmark fa-fw"></i>
+          realizar reserva
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/emprestimo'}">
+        <a href="/emprestimo" class="item">
+          <i class="fal fa-book-user fa-fw"></i>
+          realizar empréstimo
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/devolucao'}">
+        <a href="/devolucao" class="item">
+          <i class="fal fa-exchange fa-fw"></i>
+          realizar devolução
+        </a>
+      </li>
+      <li class="item" *ngIf="!logged" [ngClass]="{'active': currentUrl == '/emprestimos'}">
+        <a href="/emprestimos" class="item">
+          <i class="fal fa-search fa-fw"></i>
+          consultar empréstimo
+        </a>
+      </li>
+      <li class="item" *ngIf="!logged" [ngClass]="{'active': currentUrl == '/renovar'}">
+        <a href="/renovar" class="item">
+          <i class="fal fa-repeat fa-fw"></i>
+          realizar renovação
+        </a>
+      </li>
+      <li class="item" *ngIf="logged && isManager" [ngClass]="{'active': currentUrl == '/funcionarios'}">
+        <a href="/funcionarios" class="item">
+          <i class="fal fa-users-medical fa-fw"></i>
+          cadastar funcionário
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/remover-reserva'}">
+        <a href="/remover-reserva" class="item">
+          <i class="fal fa-user-times fa-fw"></i>
+          remover reserva
+        </a>
+      </li>
+      <li class="item" *ngIf="logged" [ngClass]="{'active': currentUrl == '/relatorio'}">
+        <a href="/relatorio" class="item">
+          <i class="fal fa-file-chart-line fa-fw"></i>
+          gerar relatório
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="options" [ngClass]="{'hide': currentUrl == '/login'}">
+    <a href="login" class="button" *ngIf="!logged">
+      entrar
+    </a>
+    <button class="button" *ngIf="logged" (click)="logout()">
+      sair
+    </button>
+  </div>
+</header>
