@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-const user_token = '';
-const user_type = '';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +13,20 @@ export class TokenStorageService {
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(user_token);
-    window.sessionStorage.setItem(user_token, token);
+    window.sessionStorage.removeItem('TOKEN');
+    window.sessionStorage.setItem('TOKEN', token);
   }
 
   public getToken(): any {
-    return sessionStorage.getItem(user_token);
+    return sessionStorage.getItem('TOKEN');
   }
 
   public saveType(type: string): void {
-    window.sessionStorage.removeItem(user_type);
-    window.sessionStorage.setItem(user_type, type);
+    window.sessionStorage.removeItem('TYPE');
+    window.sessionStorage.setItem('TYPE', type);
   }
 
   public getType(): any {
-    return sessionStorage.getItem(user_type);
+    return sessionStorage.getItem('TYPE');
   }
 }

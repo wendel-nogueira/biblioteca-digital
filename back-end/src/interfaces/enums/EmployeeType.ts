@@ -1,6 +1,6 @@
 enum EmployeeType {
-    employee = 'gerente',
-    manager = 'funcionario'
+    employee = 'funcionario',
+    manager = 'gerente'
 }
 
 

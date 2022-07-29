@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AssociateService } from '../../services/associate.service';
 import { LoanService } from '../../services/loan.service';
+import { ModalServiceService } from 'src/app/services/modal-service.service';
+
 
 @Component({
   selector: 'app-list-loan',
@@ -9,40 +11,41 @@ import { LoanService } from '../../services/loan.service';
 })
 export class ListLoanComponent implements OnInit {
 
-  constructor(private associateService: AssociateService, private loanService: LoanService) { }
+  allLoans: any[] = [];
+  loans: any[] = [];
+  searchTerm: string = '';
+
+  constructor(private associateService: AssociateService, private loanService: LoanService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
     this.getLoans();
   }
 
-  allLoans: any[] = [];
-  loans: any[] = [];
-
-  public getLoans() {
+  getLoans() {
     this.loanService.getLoans().subscribe(
       (data) => {
         this.allLoans = data;
         this.getAssociates();
-        this.loans = data;
-        console.log(this.loans);
+      }, (error) => {
+        this.modalService.modalInfo('Erro', error.error.error);
       }
     );
   }
 
-
-  public getAssociates() {
+  getAssociates() {
     this.allLoans.forEach(loan => {
       this.associateService.getAssociate(loan['Codigo_Assoc']).subscribe(
         (data) => {
-          loan['associado'] = data;
+          loan['associate'] = data;
           this.verifyStatus();
+        }, (error) => {
+          this.modalService.modalInfo('Erro', error.error.error);
         }
       );
     });
   }
 
-
-  public verifyStatus() {
+  verifyStatus() {
     this.allLoans.forEach(loan => {
       const dia = new Date();
       const dev = new Date(loan['Data_Devol']);
@@ -52,25 +55,29 @@ export class ListLoanComponent implements OnInit {
       } else {
         loan['status'] = 'Em atraso';
       }
-
     });
   }
 
+  searchLoan() {
+    this.loans = [];
 
-  search = '';
+    if (this.searchTerm === '') {
+      this.modalService.modalInfo('Erro', 'Por favor, informe um nome ou email.');
 
-
-  public searchLoan() {
-    if (this.search === '') {
-      this.loans = this.allLoans;
       return;
     }
 
-    this.loans = this.allLoans.filter(
-      (loan: any) => loan['ISBN'].toLowerCase().includes(this.search.toLowerCase())
-    );
+    this.loans = this.allLoans.filter(loan => {
+      return loan.associate.Nome.toLowerCase().includes(this.searchTerm.toLowerCase()) || loan.associate.Email.toLowerCase().includes(this.searchTerm.toLowerCase());
+    });
+
+    if (this.loans.length === 0) {
+      this.modalService.modalInfo('Erro', 'Nenhum empréstimo encontrado.');
+    }
   }
 
-
-
+  reloadContent() {
+    this.getLoans();
+    this.loans = [];
+  }
 }

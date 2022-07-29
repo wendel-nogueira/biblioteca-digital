@@ -1,4 +1,9 @@
 <div class="form">
+  <button type="submit" class="button" (click)="reloadContent()">
+    <i class="fal fa-redo-alt fa-fw"></i>
+    <span>Gerar Relatório</span>
+  </button>
+
   <div class="form-group">
     <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar">
     <button type="submit" class="button">
@@ -11,21 +16,19 @@
     <thead class="thead">
       <tr class="row">
         <th scope="col">#</th>
-        <th scope="col">ISBN</th>
-        <th scope="col">Titulo</th>
-        <th scope="col">Autor</th>
-        <th scope="col">Editora</th>
+        <th scope="col">Associado</th>
+        <th scope="col">Publicação</th>
+        <th scope="col">Empréstimo</th>
         <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody class="tbody">
-      <tr class="row">
-        <th scope="row">1</th>
-        <td>ISBN</td>
-        <td>Título</td>
-        <td>Autor</td>
-        <td>Editora</td>
-        <td>Atrasado</td>
+      <tr class="row" *ngFor="let report of reports">
+        <th scope="row">#</th>
+        <td>{{ report.associate.Codigo }}</td>
+        <td>{{ report.publication.ISBN }} - {{ report.publication.Titulo }} - {{ report.publication.Autor }} - {{ report.publication.Editora }}</td>
+        <td>{{ report.Data_Emp }}</td>
+        <td>{{ report.status }}</td>
       </tr>
     </tbody>
   </table>

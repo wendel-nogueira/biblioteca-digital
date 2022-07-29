@@ -15,7 +15,13 @@ class CreateExemplaryService {
             Preco
         };
 
-        return await exemplaryRepository.create(exemplary);
+        const createExemplary = await exemplaryRepository.create(exemplary);
+
+        if (!createExemplary.dataValues) {
+            throw new Error('Exemplar já cadastrado!');
+        }
+
+        return createExemplary;
     }
 }
 

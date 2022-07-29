@@ -1,18 +1,17 @@
 <div class="form">
   <div class="form-group">
     <label for="email" class="label">Email</label>
-    <input type="text" class="input" id="email" aria-describedby="Email" placeholder="email">
+    <input type="text" class="input" id="email" aria-describedby="Email" placeholder="email" name="email" [(ngModel)]="email" (change)="updateInfo()">
   </div>
   <div class="form-group">
     <label for="emprestimo" class="label">Empréstimo</label>
 
-    <select id="emprestimo" class="select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <select id="emprestimo" class="select" [(ngModel)]="selectedLoan">
+      <option value="" disabled selected>Selecione</option>
+      <option [value]="loan['Codigo']" *ngFor="let loan of loans">Exemplar: {{ loan['Nro_Exemplar'] }} - ISBN: {{ loan['ISBN'] }}</option>
     </select>
   </div>
-  <button class="button">
+  <button class="button" (click)="renewLoan()">
     <span>renovar</span>
   </button>
 </div>

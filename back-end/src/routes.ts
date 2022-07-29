@@ -96,12 +96,12 @@ router.get('/publicacao/:codigo', listPublicationController.handle);
 router.get('/reserva/:codigo', ensureAuthenticated, listReserveController.handle);
 
 //  GET All
-router.get('/associado', ensureAuthenticated, listAllAssociateController.handle);
+router.get('/associado', listAllAssociateController.handle);
 router.get('/funcionario', ensureAuthenticated, listAllEmployeeController.handle);
-router.get('/exemplar', ensureAuthenticated, listAllExemplaryController.handle);
+router.get('/exemplar', listAllExemplaryController.handle);
 router.get('/emprestimo', listAllLoanController.handle);
 router.get('/publicacao', listAllPublicationController.handle);
-router.get('/reserva', ensureAuthenticated, listAllReserveController.handle);
+router.get('/reserva', listAllReserveController.handle);
 
 //  POST
 router.post('/associado', ensureAuthenticated, createAssociateController.handle);

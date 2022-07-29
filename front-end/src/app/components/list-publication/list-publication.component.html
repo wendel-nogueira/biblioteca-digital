@@ -1,7 +1,11 @@
 <div class="form">
+  <button type="submit" class="button" (click)="reloadContent()">
+    <i class="fal fa-redo-alt fa-fw"></i>
+  </button>
+
   <div class="form-group">
-    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar" [(ngModel)]="search">
-    <button type="submit" class="button" (click)="searchPublication()">
+    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="exemplar" [(ngModel)]="search">
+    <button type="submit" class="button" (click)="searchExemplary()">
       <i class="fa fa-search fa-fw"></i>
     </button>
   </div>
@@ -13,25 +17,22 @@
         <th scope="col">#</th>
         <th scope="col">ISBN</th>
         <th scope="col">Titulo</th>
-        <th scope="col">Autor</th>
-        <th scope="col">Editora</th>
+        <th scope="col">Exemplar</th>
+        <th scope="col">Status</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody class="tbody">
-
-      <tr class="row" *ngFor="let publication of publications;">
+      <tr class="row" *ngFor="let exemplary of exemplaries;">
         <th scope="row">#</th>
-        <td>{{ publication['ISBN'] }}</td>
-        <td>{{ publication['Titulo'] }}</td>
-        <td>{{ publication['Autor'] }}</td>
-        <td>{{ publication['Editora'] }}</td>
+        <td>{{ exemplary['ISBN'] }}</td>
+        <td>{{ exemplary['publication']['Titulo'] }}</td>
+        <td>{{ exemplary['Numero'] }}</td>
+        <td>{{ exemplary['status'] }}</td>
         <td>
-          <a href="#">
-            <div class="icon-view icon-info icon-info-view">
-              <i class="fa fa-info fa-fw"></i>
-            </div>
-          </a>
+          <div class="icon-view icon-info icon-info-view">
+            <i class="fa fa-info fa-fw"></i>
+          </div>
         </td>
       </tr>
     </tbody>

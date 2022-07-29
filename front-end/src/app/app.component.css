@@ -137,6 +137,7 @@
 ::ng-deep .button-info{
   color: #FFF;
   transition: var(--transition-time) var(--transition-timing-function);
+  cursor: pointer;
 }
 
 ::ng-deep .button-info-sucess{
@@ -181,6 +182,7 @@
 
 ::ng-deep .icon-info{
   transition: var(--transition-time) var(--transition-timing-function);
+  cursor: pointer;
 }
 
 ::ng-deep .icon-info-sucess{
@@ -215,6 +217,12 @@
   color: var(--info-color-dark);
 }
 
+::ng-deep dl,
+::ng-deep ol,
+::ng-deep ul{
+  margin-bottom: 0;
+  padding-left: 0;
+}
 
 ::ng-deep .main{
   width: calc(100% - 300px);

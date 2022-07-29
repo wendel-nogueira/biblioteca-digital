@@ -1,21 +1,21 @@
 <div class="form">
   <div class="form-group">
     <label for="numero" class="label">Número</label>
-    <input type="number" class="input" id="numero" aria-describedby="Número" placeholder="número">
+    <input type="number" class="input" id="numero" aria-describedby="Número" placeholder="número" [(ngModel)]="exemplary.number">
   </div>
   <div class="form-group">
     <label for="isbn" class="label">ISBN</label>
 
-    <select id="isbn" class="select" aria-describedby="ISBN">
-      <option value="1">1</option>
-      <option value="2">2</option>
+    <select id="isbn" class="select" aria-describedby="ISBN" [(ngModel)]="exemplary.isbn">
+      <option value="" disabled selected>Selecione</option>
+      <option [value]="publication['ISBN']" *ngFor="let publication of publications">{{ publication['Titulo'] }} - {{ publication['Autor'] }}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="preco" class="label">Preço</label>
-    <input type="number" class="input" id="preco" aria-describedby="Preço" placeholder="preco">
+    <input type="number" class="input" id="preco" aria-describedby="Preço" placeholder="preco" [(ngModel)]="exemplary.price">
   </div>
-  <button class="button">
+  <button class="button" (click)="createExemplary()">
     <span>cadastrar</span>
   </button>
 </div>

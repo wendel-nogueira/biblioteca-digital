@@ -13,39 +13,33 @@ class CreateLoanService {
         }
 
         const loans = loanRepository.getAll();
-        const loanExists = (await loans).find(loan => loan.Nro_Exemplar === Nro_Exemplar);
+        const loanExists = (await loans).find(loan => loan.Nro_Exemplar === Nro_Exemplar && loan.Data_Devol === null);
 
         if (loanExists) {
             throw new Error('Exemplar já emprestado!');
         }
 
         const Data_Emp = new Date();
-        let Data_Devol = new Date();
-        
-
         const associate = await associateRepository.getById(Codigo_Assoc);
 
         if (!associate) {
             throw new Error('Associado não encontrado!');
         }
 
-        if (associate.Status == AssociateStatus.graduated) {
-            Data_Devol.setDate(Data_Emp.getDate() + 7);
-        } else if (associate.Status == AssociateStatus.posGraduated) {
-            Data_Devol.setDate(Data_Emp.getDate() + 10);
-        } else {
-            Data_Devol.setDate(Data_Emp.getDate() + 14);
-        }
-
         const loan = {
             Nro_Exemplar,
             ISBN,
             Codigo_Assoc,
-            Data_Emp,
-            Data_Devol
+            Data_Emp
         };
 
-        return await loanRepository.create(loan);
+        const createLoan = await loanRepository.create(loan);
+
+        if (!createLoan.dataValues) {
+            throw new Error('Emprestimo já cadastrado!');
+        }
+        
+        return createLoan;
     }
 }
 

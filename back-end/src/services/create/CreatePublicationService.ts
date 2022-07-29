@@ -16,7 +16,13 @@ class CreatePublicationService {
             Editora
         };
 
-        return await publicationRepository.create(publication);
+        const createPublication = await publicationRepository.create(publication);
+
+        if (!createPublication.dataValues) {
+            throw new Error('Publicação já cadastrada!');
+        }
+
+        return createPublication;
     }
 }
 

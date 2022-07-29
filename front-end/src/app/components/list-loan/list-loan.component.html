@@ -1,8 +1,12 @@
 <div class="form">
+  <button type="submit" class="button" (click)="reloadContent()">
+    <i class="fal fa-redo-alt fa-fw"></i>
+  </button>
+
   <div class="form-group">
-    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar">
-    <button type="submit" class="button">
-      <i class="fa fa-search fa-fw"></i>
+    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="associado" [(ngModel)]="searchTerm">
+    <button type="submit" class="button" (click)="searchLoan()">
+      consultar
     </button>
   </div>
 </div>
@@ -24,7 +28,7 @@
         <th scope="row">#</th>
         <td>{{ loan['Nro_Exemplar'] }}</td>
         <td>{{ loan['ISBN'] }}</td>
-        <td>{{ loan['associado']['Email'] }}</td>
+        <td>{{ loan['associate']['Email'] }}</td>
         <td>{{ loan['Data_Emp'] }}</td>
         <td>{{ loan['Data_Devol'] }}</td>
         <td>{{ loan['status'] }}</td>

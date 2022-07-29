@@ -21,22 +21,22 @@ export class ReserveService {
   };
 
   getReserves(): Observable<any> {
-    return this.http.get(api + 'reserve', this.httpOptions);
+    return this.http.get(api + 'reserva', this.httpOptions);
   }
 
   getReserve(id: number): Observable<any> {
-    return this.http.get(api + 'reserve/' + id, this.httpOptions);
+    return this.http.get(api + 'reserva/' + id, this.httpOptions);
   }
 
   addReserve(reserve: any): Observable<any> {
-    return this.http.post(api + 'reserve', reserve, this.httpOptions);
+    return this.http.post(api + 'reserva', reserve, this.httpOptions);
   }
 
   updateReserve(id: number, reserve: any): Observable<any> {
-    return this.http.patch(api + 'reserve/' + id, reserve, this.httpOptions);
+    return this.http.patch(api + 'reserva/' + id, reserve, this.httpOptions);
   }
 
   deleteReserve(id: number): Observable<any> {
-    return this.http.delete(api + 'reserve/' + id, this.httpOptions);
+    return this.http.delete(api + 'reserva/' + id, this.httpOptions);
   }
 }
