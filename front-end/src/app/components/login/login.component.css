@@ -3,10 +3,12 @@
   border-radius: 5px;
   padding: 24px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20vh;
 }
 
-.form .input{
-  min-width: 350px;
+.form .input,
+.form .select{
+  width: 400px;
 }
 
 .form .button{
@@ -19,3 +21,4 @@
   background-color: var(--color-secondary);
   border: 1px solid var(--color-secondary);
 }
+
