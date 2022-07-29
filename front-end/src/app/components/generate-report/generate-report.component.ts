@@ -25,7 +25,9 @@ export class GenerateReportComponent implements OnInit {
   constructor(private associateService: AssociateService, private loanService: LoanService, private publicationService: PublicationService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
+
     this.getLoans();
   }
 

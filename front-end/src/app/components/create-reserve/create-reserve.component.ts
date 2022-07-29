@@ -24,6 +24,7 @@ export class CreateReserveComponent implements OnInit {
   constructor(private associateService: AssociateService, private publicationService: PublicationService, private reserveService: ReserveService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
 
     this.getPublications();

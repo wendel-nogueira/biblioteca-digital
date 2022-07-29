@@ -21,6 +21,7 @@ export class CreateEmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
     this.authService.verifyManager();
   }

@@ -20,6 +20,7 @@ export class RemoveReserveComponent implements OnInit {
   constructor(private associateService: AssociateService, private reserveService: ReserveService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
 
     this.getReserves();

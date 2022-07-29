@@ -21,6 +21,7 @@ export class CreatePublicationComponent implements OnInit {
   constructor(private publicationService: PublicationService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
   }
 
