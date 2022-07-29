@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     return true;
   }
 
-
   login() {
     if (this.verifyFields()) {
       this.authService.login(this.user.email, this.user.password).subscribe(

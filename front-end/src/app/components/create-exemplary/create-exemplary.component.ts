@@ -21,7 +21,9 @@ export class CreateExemplaryComponent implements OnInit {
   constructor(private exemplaryService: ExemplaryService, private publicationService: PublicationService, private authService: AuthService, private modalService: ModalServiceService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
     this.authService.verifyLoggedIn();
+
     this.getPublications();
   }
 

@@ -5,6 +5,7 @@ import { ReserveService } from 'src/app/services/reserve.service';
 import { PublicationService } from 'src/app/services/publication.service';
 import { ExemplaryService } from 'src/app/services/exemplary.service';
 import { ModalServiceService } from 'src/app/services/modal-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -23,9 +24,12 @@ export class CreateLoanComponent implements OnInit {
   loans: any[] = [];
   exemplaries: any[] = [];
 
-  constructor(private associateService: AssociateService, private loanService: LoanService, private reserveService: ReserveService, private publicationService: PublicationService, private modalService: ModalServiceService, private exemplaryService: ExemplaryService) { }
+  constructor(private associateService: AssociateService, private loanService: LoanService, private reserveService: ReserveService, private publicationService: PublicationService, private modalService: ModalServiceService, private exemplaryService: ExemplaryService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.verifyToken();
+    this.authService.verifyLoggedIn();
+
     this.getExemplarys();
     this.getPublications();
     this.getAssociates();
