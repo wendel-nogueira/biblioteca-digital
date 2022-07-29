@@ -24,7 +24,13 @@ class CreateReserveService {
             Status
         };
 
-        return await reserveRepository.create(reserve);
+        const createReserve = await reserveRepository.create(reserve);
+
+        if (!createReserve.dataValues) {
+            throw new Error('Reserva já cadastrada!');
+        }
+
+        return createReserve;
     }
 }
 

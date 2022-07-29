@@ -32,7 +32,13 @@ class CreateEmployeeService {
             Senha: newPass
         };
 
-        return await employeeRepository.create(employee);
+        const createEmployee = await employeeRepository.create(employee);
+
+        if (!createEmployee.dataValues) {
+            throw new Error('Funcionário já cadastrado!');
+        }
+        
+        return createEmployee;
     }
 }
 

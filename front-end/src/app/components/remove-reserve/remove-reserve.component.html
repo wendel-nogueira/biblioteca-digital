@@ -1,7 +1,11 @@
 <div class="form">
+  <button type="submit" class="button" (click)="reloadReserves()">
+    <i class="fal fa-redo-alt fa-fw"></i>
+  </button>
+
   <div class="form-group">
-    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar">
-    <button type="submit" class="button">
+    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar" [(ngModel)]="searchTerm">
+    <button type="submit" class="button" (click)="searchReserve()">
       <i class="fa fa-search fa-fw"></i>
     </button>
   </div>
@@ -12,25 +16,23 @@
       <tr class="row">
         <th scope="col">#</th>
         <th scope="col">ISBN</th>
-        <th scope="col">Associado</th>
+        <th scope="col">Email</th>
         <th scope="col">Data</th>
         <th scope="col">Status</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody class="tbody">
-      <tr class="row">
-        <th scope="row">1</th>
-        <td>ISBN</td>
-        <td>Associado</td>
-        <td>Data</td>
-        <td>Status</td>
+      <tr class="row" *ngFor="let reserve of reserves">
+        <th scope="row">#</th>
+        <td>{{ reserve.isbn }}</td>
+        <td>{{ reserve.associado }}</td>
+        <td>{{ reserve.data }}</td>
+        <td>{{ reserve.status }}</td>
         <td>
-          <a href="#">
-            <div class="icon-view icon-info icon-info-view">
-              <i class="fa fa-info fa-fw"></i>
-            </div>
-          </a>
+          <div class="icon-view icon-info icon-info-danger" (click)="removeReserve(reserve.codigo)">
+            <i class="fal fa-trash-alt fa-fw"></i>
+          </div>
         </td>
       </tr>
     </tbody>

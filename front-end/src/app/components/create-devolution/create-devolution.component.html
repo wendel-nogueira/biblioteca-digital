@@ -1,8 +1,12 @@
 <div class="form">
+  <button type="submit" class="button" (click)="reloadContent()">
+    <i class="fal fa-redo-alt fa-fw"></i>
+  </button>
+
   <div class="form-group">
-    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar">
-    <button type="submit" class="button">
-      <i class="fa fa-search fa-fw"></i>
+    <input type="text" class="input" id="pesquisar" aria-describedby="Pesquisar" placeholder="pesquisar" [(ngModel)]="searchTerm">
+    <button type="submit" class="button" (click)="searchLoan()">
+      consultar
     </button>
   </div>
 </div>
@@ -11,29 +15,28 @@
     <thead class="thead">
       <tr class="row">
         <th scope="col">#</th>
+        <th scope="col">Exemplar</th>
         <th scope="col">ISBN</th>
-        <th scope="col">Titulo</th>
-        <th scope="col">Autor</th>
-        <th scope="col">Editora</th>
+        <th scope="col">Associado</th>
+        <th scope="col">Empréstimo</th>
+        <th scope="col">Status</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody class="tbody">
-      <tr class="row">
-        <th scope="row">1</th>
-        <td>ISBN</td>
-        <td>Título</td>
-        <td>Autor</td>
-        <td>Editora</td>
+      <tr class="row" *ngFor="let loan of loans;">
+        <th scope="row">#</th>
+        <td>{{ loan['Nro_Exemplar'] }}</td>
+        <td>{{ loan['ISBN'] }}</td>
+        <td>{{ loan['associate']['Email'] }}</td>
+        <td>{{ loan['Data_Emp'] }}</td>
+        <td>{{ loan['status'] }}</td>
         <td>
-          <a href="#">
-            <div class="icon-view icon-info icon-info-view">
-              <i class="fa fa-info fa-fw"></i>
-            </div>
-          </a>
+          <div class="icon-view icon-info icon-info-danger" (click)="createDevolution(loan['Codigo'])">
+            <i class="fal fa-exchange fa-fw"></i>
+          </div>
         </td>
       </tr>
-
     </tbody>
   </table>
 </div>

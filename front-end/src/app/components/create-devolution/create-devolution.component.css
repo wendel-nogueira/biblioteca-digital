@@ -9,8 +9,11 @@
 .form{
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 120px;
+  padding-left: 48px;
   padding-right: 48px;
 }
 
@@ -73,7 +76,7 @@
 .list .table .thead .row,
 .list .table .tbody .row{
   display: grid;
-  grid-template-columns: 5% 20% 20% 20% 20% 15%;
+  grid-template-columns: 5% 20% 20% 20% 11% 11% 8%;
 }
 
 .list .table .tbody .row th,

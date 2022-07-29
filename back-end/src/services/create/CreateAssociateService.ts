@@ -29,7 +29,13 @@ class CreateAssociateService {
             Status
         };
 
-        return await associateRepository.create(associate);
+        const createAssociate = await associateRepository.create(associate);
+
+        if (!createAssociate.dataValues) {
+            throw new Error('Associado já cadastrado!');
+        }
+
+        return createAssociate;
     }
 }
 

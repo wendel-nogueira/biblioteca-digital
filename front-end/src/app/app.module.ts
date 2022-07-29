@@ -20,6 +20,12 @@ import { CreateRenewComponent } from './components/create-renew/create-renew.com
 import { CreateAssociateComponent } from './components/create-associate/create-associate.component';
 import { RemoveReserveComponent } from './components/remove-reserve/remove-reserve.component';
 import { GenerateReportComponent } from './components/generate-report/generate-report.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ModalServiceService } from './services/modal-service.service';
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
+
 
 @NgModule({
   declarations: [
@@ -38,15 +44,18 @@ import { GenerateReportComponent } from './components/generate-report/generate-r
     CreateRenewComponent,
     CreateAssociateComponent,
     RemoveReserveComponent,
-    GenerateReportComponent
+    GenerateReportComponent,
+    ModalConfirmComponent,
+    ModalInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [ModalServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

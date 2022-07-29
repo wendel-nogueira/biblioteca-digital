@@ -1,22 +1,22 @@
 <div class="form">
   <div class="form-group">
     <label for="isbn" class="label">ISBN</label>
-    <input type="text" class="input" id="isbn" aria-describedby="ISBN" placeholder="isbn">
+    <input type="text" class="input" id="isbn" aria-describedby="ISBN" placeholder="isbn" [(ngModel)]="publication.isbn">
   </div>
   <div class="form-group">
     <label for="titulo" class="label">Título</label>
-    <input type="text" class="input" id="titulo" aria-describedby="Iítulo" placeholder="título">
+    <input type="text" class="input" id="titulo" aria-describedby="Iítulo" placeholder="título" [(ngModel)]="publication.title">
   </div>
   <div class="form-group">
     <label for="autor" class="label">Autor</label>
-    <input type="text" class="input" id="autor" aria-describedby="Autor" placeholder="autor">
+    <input type="text" class="input" id="autor" aria-describedby="Autor" placeholder="autor" [(ngModel)]="publication.author">
   </div>
   <div class="form-group">
     <label for="editora" class="label">Editora</label>
-    <input type="text" class="input" id="editora" aria-describedby="Editora" placeholder="editora">
+    <input type="text" class="input" id="editora" aria-describedby="Editora" placeholder="editora" [(ngModel)]="publication.publishingCompany">
   </div>
 
-  <button class="button">
+  <button class="button" (click)="createPublication()">
     <span>cadastrar</span>
   </button>
 </div>

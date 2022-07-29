@@ -1,0 +1,23 @@
+.form{
+  background: var(--background-color-tertiary);
+  border-radius: 5px;
+  padding: 24px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form .input,
+.form .select{
+  min-width: 400px;
+}
+
+.form .button{
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #FFF;
+}
+
+.form .button:hover{
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
